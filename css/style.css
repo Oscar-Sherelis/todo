@@ -1,0 +1,65 @@
+html {
+	background-color: #000;
+}
+
+section {
+	color: #fff;
+	text-align: center;
+	width: 95%;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	padding-top: 15px;
+	font-size: 32px;
+	font-weight: bold;
+}
+
+input[type="text"] {
+	width: 80%;
+	max-width: 80%;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 18px;
+}
+
+input[type="submit"] {
+	background-color: #000;
+	border: 2px solid #fff;
+	color: #fff;
+	font-size: 25px;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+	cursor: pointer;
+}
+
+button {
+	background-color: red;
+	border-radius: 50%;
+	padding: 10px;
+}
+
+div {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	display: block;
+}
+
+span {
+	padding-right: 15px;
+}
+
+li {
+	padding: 15px;
+}
