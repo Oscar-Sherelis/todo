@@ -125,3 +125,8 @@ li {
 li span:nth-child(1) {
 	font-size: 24px;
 }
+@media only screen and (min-width: 800px) {
+  table {
+	  width: 60vw;
+  }
+}
