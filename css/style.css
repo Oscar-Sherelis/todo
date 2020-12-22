@@ -1,8 +1,51 @@
-* {
-	box-sizing: border-box;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.content {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+table {
+	width: 100%;
+	table-layout: fixed;
+	table-layout: fixed;
+	border-collapse: collapse;
+	display: none;
+	border: 1px solid silver;
+	border-radius: 5px;
+	margin-top: 50px;
+}
+th {
+	font-weight: bold;
+	font-size: 24px;
+}
+th,
+td {
+	padding: 15px;
+	border: 1px solid silver;
+	width: 100%;
+}
+td {
+	overflow: hidden;
+	font-size: 18px;
+	white-space: -o-pre-wrap; 
+    word-wrap: break-word;
+    white-space: pre-wrap; 
+    white-space: -moz-pre-wrap; 
+	white-space: -pre-wrap; 
+	max-width: 100px;
 }
 html {
-	background-color: #000;
+	background: rgb(22,101,189);
+	background: -moz-linear-gradient(145deg, rgba(22,101,189,1) 0%, rgba(69,116,201,1) 100%);
+	background: -webkit-linear-gradient(145deg, rgba(22,101,189,1) 0%, rgba(69,116,201,1) 100%);
+	background: linear-gradient(145deg, rgba(22,101,189,1) 0%, rgba(69,116,201,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1665bd",endColorstr="#4574c9",GradientType=1);
+	background-repeat: no-repeat;
+	min-height: 100vh;
 }
 section {
 	color: #fff;
@@ -23,6 +66,7 @@ h1 {
 }
 input[type="text"] {
 	width: 50%;
+	border: none;
 	box-sizing: border-box;
 	padding: 14px;
 	font-size: 18px;
@@ -34,7 +78,7 @@ input[type="checkbox"] {
 }
 input[type="submit"] {
 	background-color: rgb(35, 185, 110);
-	border: 2px solid #fff;
+	border: none;
 	color: #fff;
 	font-size: 18px;
 	padding: 10px;
@@ -57,7 +101,7 @@ button:hover {
 .check_button img {
 	width: 30px;
 	height: 30px;
-	background: #fff;
+	background: transparent;
 }
 div {
 	width: 80%;

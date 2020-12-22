@@ -1,26 +1,24 @@
 const input_el = document.querySelector("input[type=text]");
 const add_to_do = document.querySelector("input[type=submit]");
-const section_el = document.querySelector("section");
 
-let ul_el = document.createElement("ul");
+let tbody_el = document.querySelector("tbody");
 
 let data_store = [];
 let checked_arr = [];
 
 
 function deleteToDo (data, btn_value) {
-	if (typeof document.querySelectorAll('span') != 'undefined' && typeof document.querySelectorAll('li') != 'undefined') {
-		let selected_li_to_del = document.querySelectorAll('li');
+	if (typeof document.querySelectorAll('td') != 'undefined' && typeof document.querySelectorAll('tbody tr') != 'undefined') {
+		let selected_tr_to_del = document.querySelectorAll('tbody tr');
 
-		if (typeof selected_li_to_del[btn_value].querySelectorAll('span') != 'undefined') {
-			let selectedSpan = selected_li_to_del[btn_value].querySelectorAll('span');
-			let selectedImg = selectedSpan[2].querySelector('button img')
-			console.log('img ' + selectedImg.src)
+		if (typeof selected_tr_to_del[btn_value].querySelectorAll('td') != 'undefined') {
+			let selectedtd = selected_tr_to_del[btn_value].querySelectorAll('td');
+			let selectedImg = selectedtd[2].querySelector('button img')
 			if (selectedImg.src.includes('/images/checked.svg')) {
 
 				let findIndex = checked_arr.findIndex(value => value === btn_value)
 				selectedImg.src = './images/unchecked.svg';
-				selectedSpan[0].style.textDecoration = 'none';
+				selectedtd[0].style.textDecoration = 'none';
 
 				checked_arr.splice(findIndex, 1);
 
@@ -31,15 +29,21 @@ function deleteToDo (data, btn_value) {
 		if(btn_value == i) {
 			data.splice(btn_value, 1);
 		}
-		ul_el.innerHTML = '';
+		tbody_el.innerHTML = '';
 	});
+
+	if (data.length > 0) {
+		document.querySelector('table').style.display = 'block';
+	} else {
+		document.querySelector('table').style.display = 'none';
+	}
 	showData()
 }
 
 function checkToDo (data, checkbox_button_value) {
-	let selected_li = document.querySelectorAll('li');
-	let selected_span = selected_li[checkbox_button_value].querySelectorAll('span');
-	let selected_image = selected_span[2].querySelector('.check_button img')
+	let selected_tr = document.querySelectorAll('tbody tr');
+	let selected_td = selected_tr[checkbox_button_value].querySelectorAll('td');
+	let selected_image = selected_td[2].querySelector('.check_button img')
 
 	data.filter(function (v, i) {  
 
@@ -62,7 +66,7 @@ function checkToDo (data, checkbox_button_value) {
 			  }
 		}
 	});
-	ul_el.innerHTML = '';
+	tbody_el.innerHTML = '';
 	showData()
 }
 
@@ -75,10 +79,11 @@ function addToDo () {
 		arr.push(input_el.value);
 		data_store.push(arr);
 
-		ul_el.innerHTML = '';
+		tbody_el.innerHTML = '';
 		showData();
 		input_el.value = '';
 	}
+	document.querySelector('table').style.display = 'block';
 }
 
 function showData () {
@@ -95,18 +100,16 @@ function showData () {
 
 		check_button.setAttribute('value', index);
 		check_button.append(unchecked_image);
-		let span1 = document.createElement('span');
-		let span2 = document.createElement('span');
-		let span3 = document.createElement('span')
-		let li1 = document.createElement('li');
+		let td1 = document.createElement('td');
+		let td2 = document.createElement('td');
+		let td3 = document.createElement('td')
+		let tr1 = document.createElement('tr');
 
-		span1.append(element[0]);
-		span2.append(del_button);
-		span3.append(check_button);
-		li1.append(span1, span2, span3);
-		ul_el.append(li1);
-
-		section_el.append(ul_el);
+		td1.append(element[0]);
+		td2.append(del_button);
+		td3.append(check_button);
+		tr1.append(td1, td2, td3);
+		tbody_el.append(tr1);
 
 		if (data_store.length > 0) {
 
@@ -120,11 +123,11 @@ function showData () {
 		}
 	});
 
-	if (typeof document.querySelectorAll('li') != 'undefined' && document.querySelector('span') != 'undefined' && checked_arr.length > 0) {
-		let selected_li = document.querySelectorAll('li');
+	if (typeof document.querySelectorAll('tbody tr') != 'undefined' && document.querySelector('td') != 'undefined' && checked_arr.length > 0) {
+		let selected_tr = document.querySelectorAll('tbody tr');
 			checked_arr.forEach(index => {
-				if (typeof selected_li[index].querySelectorAll('span') != 'undefined') {
-					let text = selected_li[index].querySelectorAll('span');
+				if (typeof selected_tr[index].querySelectorAll('td') != 'undefined') {
+					let text = selected_tr[index].querySelectorAll('td');
 					text[0].style.textDecoration = 'line-through';
 					text[2].querySelector('button img').src = './images/checked.svg'
 				}
